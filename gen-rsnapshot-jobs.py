@@ -215,8 +215,3 @@ for i in d['entries']:
   if 'Rsnapshot' in i['title']:
     print(i['title'].replace('broken','failed').replace('build','backup').replace('Rsnapshot','').replace(' - ','\t'))
 print('\n\n')
-
-
-
-
-

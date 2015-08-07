@@ -30,3 +30,8 @@ optional arguments:
   --snapshot-preexec PREEXEC
                         Rsnapshot Preexec Command
 ```
+
+
+## Installation
+Quick install for EL based linux:
+`bash install`
