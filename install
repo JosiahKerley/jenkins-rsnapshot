@@ -1,0 +1,19 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+CWD=`pwd`
+cd "$DIR"
+etc=/etc/gen-rsnapshot-jobs
+if [ ! -d "${etc}" ]
+then
+  mkdir -p "${etc}"
+fi
+yum install -y python-pip sshpass rsnapshot
+pip install python-jenkins
+pip install feedparser
+pip install jinja2
+pip install argparse
+cat gen-rsnapshot-jobs.py > /usr/bin/gen-rsnapshot-jobs
+cat jenkins-job.xml.jinja2 > "${etc}/jenkins-job.xml.jinja2"
+cat rsnapshot-config.jinja2 > "${etc}/rsnapshot-config.jinja2"
+chmod +x /usr/bin/gen-rsnapshot-jobs
+cd "$CWD"

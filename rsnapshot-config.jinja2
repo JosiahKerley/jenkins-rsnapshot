@@ -1,0 +1,22 @@
+config_version	1.2
+snapshot_root	{{ backup.root }}
+cmd_cp		/usr/bin/cp
+cmd_rm		/usr/bin/rm
+cmd_rsync	/usr/bin/rsync
+cmd_logger	/usr/bin/logger
+cmd_du		/usr/bin/du
+cmd_ssh		/usr/bin/ssh
+ssh_args	-o BatchMode=yes
+interval	hourly	24
+interval	daily	7
+interval	weekly	4
+verbose		2
+loglevel	3
+logfile		/tmp/{{ backup.host }}.log
+lockfile	/tmp/{{ backup.host }}.pid
+{% if backup.preexec %}
+cmd_preexec	{{ backup.preexec }}
+{% endif %}
+{% for i in backup.directory %}
+backup	{{ backup.user }}@{{ backup.host }}:{{ i }}	{{ backup.host }}/
+{% endfor %}
