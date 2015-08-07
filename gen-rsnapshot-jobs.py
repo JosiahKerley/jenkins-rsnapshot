@@ -159,6 +159,7 @@ print backup['config']['text']
 schedules = [
   {"name":"hourly", "cron":"@hourly"},
   {"name":"daily",  "cron":"@daily"},
+  {"name":"weekly","cron":"@weekly"},
   {"name":"monthly","cron":"@monthly"},
 ]
 for schedule in schedules:
